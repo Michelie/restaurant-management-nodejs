@@ -6,11 +6,11 @@ class MenuService {
     return await menuItem.save();
   }
 
-  async getMenuItemById(id) {
-    return await MenuItem.findById(id);
+  async getMenuItemById(category, id) {
+    return await MenuItem.findOne({ _id: id, category: category });
   }
 
-  async updateMenuItem(id, data) {
+  async updateMenuItem(category, id, data) {
     return await MenuItem.findByIdAndUpdate(id, data, { new: true });
   }
 
@@ -20,6 +20,14 @@ class MenuService {
 
   async getAllMenuItems() {
     return await MenuItem.find();
+  }
+
+  async getMenuItemsByCategory(category) {
+    return await MenuItem.find({ category: category });
+  }
+
+  async getMenuItemByCategoryAndId(category, id) {
+    return await MenuItem.findOne({ _id: id, category: category });
   }
 }
 

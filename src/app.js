@@ -14,11 +14,12 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 
-// Routes
+// Menu Routes
 const menuRoutes = require('./routes/menu.routes');
-const orderRoutes = require('./routes/order.routes');
-
 app.use('/api/menu', menuRoutes);
+
+// Order routes
+const orderRoutes = require('./routes/order.routes');
 app.use('/api/order', orderRoutes);
 
 // Error handling middleware
